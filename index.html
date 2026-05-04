@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cek Hoax Bantuan Pemerintah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Plus+Jakarta+Sans:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FFC0CB; /* Pink Polos */
+        }
+        .font-lucu { font-family: 'Fredoka', sans-serif; }
+        
+        .chat-bg {
+            background: linear-gradient(135deg, rgba(255,192,203,1) 0%, rgba(186,215,233,1) 100%);
+            border-radius: 20px;
+        }
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+    <!-- Section 1: Landing Page -->
+    <section id="landing" class="max-w-4xl mx-auto text-center py-20 fade-in">
+        <div class="bg-white p-10 rounded-3xl shadow-2xl border-4 border-blue-400">
+            <i class="fas fa-shield-virus text-6xl text-blue-500 mb-4"></i>
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-4 font-lucu">Apakah Ini Hoax?</h1>
+            <p class="text-lg text-gray-600 mb-8">Lindungi dirimu dan datamu. Belajar membedakan bantuan asli dan jebakan digital di sini!</p>
+            <button onclick="startSim()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-full text-xl transition-transform hover:scale-105 shadow-lg">
+                Mulai Simulasi <i class="fas fa-play ml-2"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Section 2: Simulasi Chat -->
+    <section id="simulasi" class="hidden max-w-md mx-auto fade-in">
+        <div class="bg-[#ECE5DD] rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+            <!-- Header Chat -->
+            <div class="bg-[#075E54] p-4 text-white flex items-center gap-3">
+                <i class="fas fa-users text-2xl"></i>
+                <div>
+                    <p class="font-bold">Grup Kelas 10-A</p>
+                    <p class="text-xs opacity-80">Online</p>
+                </div>
+            </div>
+            
+            <!-- Body Chat -->
+            <div class="p-4 space-y-4 h-[400px] overflow-y-auto bg-pink-50">
+                <div class="bg-white p-3 rounded-lg shadow-sm max-w-[80%] fade-in">
+                    <p class="text-xs font-bold text-blue-600">Budi</p>
+                    <p>Guys katanya ada bantuan pemerintah Rp5 juta 😱 Buruan daftar di: <span class="text-blue-500 underline">bantuan-cepat123.xyz</span></p>
+                    <p class="text-[10px] text-right text-gray-400">09:30</p>
+                </div>
+            </div>
+
+            <!-- Pilihan Tindakan -->
+            <div class="p-4 bg-white border-t space-y-2">
+                <p class="text-center text-sm font-bold text-gray-500 mb-3">Apa tindakanmu?</p>
+                <button onclick="choose(1)" class="w-full py-2 px-4 bg-red-100 hover:bg-red-200 text-red-700 rounded-xl text-sm font-semibold transition">Klik dulu siapa tahu beruntung</button>
+                <button onclick="choose(2)" class="w-full py-2 px-4 bg-green-100 hover:bg-green-200 text-green-700 rounded-xl text-sm font-semibold transition">Cek di situs resmi kementerian</button>
+                <button onclick="choose(3)" class="w-full py-2 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-semibold transition">Langsung sebar ke grup lain</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Hasil & Edukasi -->
+    <section id="hasil" class="hidden max-w-2xl mx-auto py-10 fade-in">
+        <div id="result-content" class="rounded-3xl p-8 text-center shadow-xl mb-8">
+            <!-- Isi hasil diinject via JS -->
+        </div>
+
+        <div class="bg-white rounded-3xl p-8 shadow-lg border-b-8 border-blue-500">
+            <h3 class="text-2xl font-bold mb-6 text-gray-800 font-lucu"><i class="fas fa-lightbulb text-yellow-500 mr-2"></i>Tips Deteksi Hoax</h3>
+            <ul class="text-left space-y-4">
+                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-green-500 mt-1"></i> <span><strong>Cek Domain:</strong> Situs resmi pemerintah selalu berakhiran <b>.go.id</b>, bukan .xyz atau .com.</span></li>
+                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-green-500 mt-1"></i> <span><strong>Cari Pembanding:</strong> Cari berita di portal media besar atau akun resmi Instagram Kementerian.</span></li>
+            </ul>
+            <button onclick="showQuiz()" class="mt-8 bg-brown-600 bg-amber-800 text-white py-3 px-6 rounded-full w-full font-bold">Lanjut ke Quiz Mini!</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-20 text-center text-gray-700">
+        <p class="font-bold">Dibuat oleh Kelompok Digital Literacy</p>
+        <p class="text-sm">Tugas Edukasi Anti-Hoax © 2026</p>
+    </footer>
+
+    <script>
+        function startSim() {
+            document.getElementById('landing').classList.add('hidden');
+            document.getElementById('simulasi').classList.remove('hidden');
+        }
+
+        function choose(option) {
+            const resultSection = document.getElementById('hasil');
+            const content = document.getElementById('result-content');
+            document.getElementById('simulasi').classList.add('hidden');
+            resultSection.classList.remove('hidden');
+
+            if(option === 1) {
+                content.className = "bg-red-500 text-white rounded-3xl p-8 text-center shadow-xl mb-8";
+                content.innerHTML = `<i class="fas fa-skull-crossbones text-6xl mb-4"></i><h2 class="text-2xl font-bold">BAHAYA! Phishing Terdeteksi</h2><p>Link tersebut adalah jebakan! Data pribadimu bisa dicuri oleh hacker.</p>`;
+            } else if(option === 2) {
+                content.className = "bg-green-500 text-white rounded-3xl p-8 text-center shadow-xl mb-8";
+                content.innerHTML = `<i class="fas fa-award text-6xl mb-4"></i><h2 class="text-2xl font-bold">Smart User!</h2><p>Kamu hebat! Selalu verifikasi informasi di situs resmi kementerian (go.id).</p>`;
+            } else {
+                content.className = "bg-orange-500 text-white rounded-3xl p-8 text-center shadow-xl mb-8";
+                content.innerHTML = `<i class="fas fa-bullhorn text-6xl mb-4"></i><h2 class="text-2xl font-bold">STOP! Jangan Asal Sebar</h2><p>Menyebarkan hoax bisa merugikan orang lain dan melanggar UU ITE. Saring sebelum sharing!</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
