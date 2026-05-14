@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Bantaeng Digital Map</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      background:linear-gradient(135deg,#7b1113,#b22222);
+      min-height:100vh;
+      color:white;
+      padding:30px;
+    }
+
+    h1{
+      text-align:center;
+      margin-bottom:10px;
+      font-size:40px;
+    }
+
+    .subtitle{
+      text-align:center;
+      margin-bottom:40px;
+    }
+
+    .container{
+      display:flex;
+      justify-content:center;
+      gap:30px;
+      flex-wrap:wrap;
+    }
+
+    .location{
+      position:relative;
+      width:250px;
+      height:120px;
+      border-radius:20px;
+      background:rgba(255,255,255,0.1);
+      border:2px solid rgba(255,255,255,0.2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:28px;
+      cursor:pointer;
+      overflow:hidden;
+      transition:0.3s;
+    }
+
+    .location:hover{
+      transform:scale(1.05);
+    }
+
+    .card{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:white;
+      color:black;
+      opacity:0;
+      transition:0.4s;
+      pointer-events:none;
+    }
+
+    .location:hover .card{
+      opacity:1;
+    }
+
+    .card img{
+      width:100%;
+      height:70px;
+      object-fit:cover;
+    }
+
+    .info{
+      padding:8px;
+    }
+
+    .info h2{
+      color:#7b1113;
+      font-size:18px;
+      margin-bottom:4px;
+    }
+
+    .info p{
+      font-size:12px;
+    }
+
+    footer{
+      text-align:center;
+      margin-top:50px;
+      opacity:0.7;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>The Bantaeng Digital Map</h1>
+
+  <p class="subtitle">
+    Sentuh nama lokasi untuk melihat informasi tersembunyi ✨
+  </p>
+
+  <div class="container">
+
+    <!-- SERUNI -->
+    <div class="location">
+      Seruni
+
+      <div class="card">
+        <img src="https://picsum.photos/300/200?random=1">
+
+        <div class="info">
+          <h2>Seruni</h2>
+          <p>
+            Tempat wisata dengan suasana alam yang indah dan udara sejuk.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- EREMERASA -->
+    <div class="location">
+      Eremerasa
+
+      <div class="card">
+        <img src="https://picsum.photos/300/200?random=2">
+
+        <div class="info">
+          <h2>Eremerasa</h2>
+          <p>
+            Daerah pegunungan dengan pemandangan
